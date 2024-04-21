@@ -18,6 +18,7 @@ class HelloController extends Controller
 
     public function getOrder(): Response
     {
+        \Log::info('hello log');
         return new Response('get Order');
     }
 

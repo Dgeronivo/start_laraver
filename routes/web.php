@@ -20,10 +20,13 @@ Route::get('/', function () {
 })->name('homePage');
 
 Route::get(
-    '/hello', fn() => 'hello world!'
+    '/helloWithToken', fn() => 'hello world!'
 )
     ->middleware([EnsureTokenIsValid::class])
 ;
+
+Route::get('/hello', fn() => view('hello', ['name' => 'Alex', 'test' => false,]));
+Route::get('/admin/hello', fn() => view('admin.hello'));
 
 Route::permanentRedirect('/hello2', '/hello');
 
