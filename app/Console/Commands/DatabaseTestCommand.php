@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Post;
 use Illuminate\Console\Command;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
@@ -12,7 +13,17 @@ class DatabaseTestCommand extends Command
 
     public function handle()
     {
-        $this->useOrWhere();
+        $this->getEntity();
+    }
+
+    private function getEntity()
+    {
+        /** @var Collection $result */
+        $result = Post::where('id', 1)->get();
+        /** @var Post $post */
+        $post = $result->first();
+        dump($post->id);
+        dd($post->name);
     }
 
     private function useOrWhere()
@@ -25,9 +36,9 @@ class DatabaseTestCommand extends Command
                     ->where('id', 2)
                     ->where('is_active', 1);
             })
-//            ->get()
-        ;
-        $res->dd();
+            ->get();
+        // debug for builder
+//        $res->dd();
 
 
         dd($res);
