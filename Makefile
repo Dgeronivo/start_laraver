@@ -1,5 +1,5 @@
 start:
-	@php artisan serve --port 8000
+	@sh artisan.sh  serve --port 8080 --host 0.0.0.0
 
 docker-start:
 	@docker-compose up -d --build
