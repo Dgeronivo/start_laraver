@@ -1,5 +1,9 @@
 # Start learn laravel
+For start copy env from env.example
+make docker-start
+sh console.sh composer install
 
+### Commands:
 php artisan route:list
 
 ## Database command:
