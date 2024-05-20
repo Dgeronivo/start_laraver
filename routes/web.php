@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelloController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\MainPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'home';
-})->name('homePage');
+Route::get('/', [MainPageController::class, 'index'])
+    ->name('homePage');
 
 Route::get(
     '/helloWithToken', fn() => 'hello world!'
